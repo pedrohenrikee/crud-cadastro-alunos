@@ -7,12 +7,12 @@ const titulo = document.getElementById('titulo-form')
 const campoId = document.getElementById('aluno-id')
 const campoBusca = document.getElementById('busca')
 
-// Lista carregada da API (a busca filtra em cima dela)
+
 let listaAlunos = []
 
 const CAMPOS = ['nome', 'email', 'celular', 'cep', 'logradouro', 'bairro', 'estado', 'cidade']
 
-// Desenha a tabela, aplicando o filtro da busca (nome ou e-mail)
+
 const renderizarTabela = () => {
   const termo = campoBusca.value.trim().toLowerCase()
   const filtrados = listaAlunos.filter(aluno =>
@@ -40,20 +40,18 @@ const renderizarTabela = () => {
   })
 }
 
-// Busca os alunos na API e atualiza a tabela
+
 const carregarAlunos = async () => {
   listaAlunos = await getAlunos()
   renderizarTabela()
 }
 
-// Volta o formulário para o modo "cadastrar"
 const sairModoEdicao = () => {
   campoId.value = ''
   titulo.textContent = 'Cadastrar Aluno'
   btnCadastrar.textContent = 'Cadastrar'
 }
 
-// CREATE / UPDATE
 form.addEventListener('submit', async (evento) => {
   evento.preventDefault()
 
@@ -74,13 +72,10 @@ form.addEventListener('submit', async (evento) => {
   carregarAlunos()
 })
 
-// Botão Limpar
 form.addEventListener('reset', sairModoEdicao)
 
-// Busca: filtra enquanto digita
 campoBusca.addEventListener('input', renderizarTabela)
 
-// EDITAR / EXCLUIR
 tbody.addEventListener('click', async (evento) => {
   const botao = evento.target.closest('button[data-acao]')
   if (!botao) return
