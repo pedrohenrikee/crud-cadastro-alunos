@@ -26,7 +26,7 @@ const CAMPOS = ['nome', 'email', 'celular', 'cep', 'logradouro', 'bairro', 'esta
 
 const renderizarTabela = () => {
   const termo = campoBusca.value.trim().toLowerCase()
-  const escolhido = document.querySelector('input[name="filtro"]:checked').value
+  const escolhido = document.querySelector('input[name="campo-filtro"]:checked').value
   const campos = CAMPOS_FILTRO[escolhido]
   
   const filtrados = listaAlunos.filter(aluno =>
