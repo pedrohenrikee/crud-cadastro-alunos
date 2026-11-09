@@ -108,6 +108,9 @@ tbody.addEventListener('click', async (evento) => {
     campoId.value = aluno.id
     titulo.textContent = 'Editar Aluno'
     btnCadastrar.textContent = 'Salvar alterações'
+
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    document.getElementById('nome').focus()
   }
 })
 

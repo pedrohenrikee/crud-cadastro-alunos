@@ -1,4 +1,4 @@
-/* ---------- Variáveis ---------- */
+
 :root {
   color-scheme: dark;
 
@@ -21,7 +21,7 @@
   --sombra: 0 6px 22px rgba(0, 0, 0, 0.45);
 }
 
-/* ---------- Base ---------- */
+
 * {
   box-sizing: border-box;
 }
@@ -60,7 +60,7 @@ h2 {
   font-size: 18px;
 }
 
-/* ---------- Cards ---------- */
+
 .card {
   background: var(--card);
   border: 1px solid var(--borda);
@@ -87,7 +87,7 @@ h2 {
   border-top: 1px solid var(--borda);
 }
 
-/* ---------- Formulário ---------- */
+
 fieldset {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -142,7 +142,7 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
 }
 
-/* ---------- Botões ---------- */
+
 button {
   font: inherit;
   cursor: pointer;
@@ -182,7 +182,7 @@ button {
   color: var(--primaria);
 }
 
-/* ---------- Tabela ---------- */
+
 .tabela-wrapper {
   overflow-x: auto;
 }
@@ -232,7 +232,7 @@ tbody td:last-child {
   white-space: nowrap;
 }
 
-/* Botões Editar / Excluir (gerados pelo script.js) */
+
 td button[data-acao] {
   height: 32px;
   padding: 0 14px;
@@ -262,7 +262,7 @@ td button[data-acao='excluir']:hover {
   background: var(--perigo-claro);
 }
 
-/* ---------- Busca ---------- */
+
 .card-topo {
   display: flex;
   align-items: flex-end;
@@ -272,7 +272,7 @@ td button[data-acao='excluir']:hover {
 }
 
 .busca {
-  position: relative;          /* o menu se posiciona em relação a esta caixa */
+  position: relative;         
 }
 
 .busca-linha {
@@ -314,7 +314,7 @@ td button[data-acao='excluir']:hover {
 }
 
 .menu-filtro[hidden] {
-  display: none;               /* sem isso, o display:flex acima ignora o "hidden" */
+  display: none;         
 }
 
 .menu-filtro label {
