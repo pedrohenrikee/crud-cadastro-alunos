@@ -72,7 +72,23 @@
 
         <div class="busca">
           <label for="busca">Buscar aluno</label>
-          <input type="search" id="busca" placeholder="Buscar por nome ou e-mail" autocomplete="off">
+
+          <div class="busca-linha">
+            <button type="button" id="btn-menu" class="btn-menu"
+              aria-label="Escolher campo do filtro"
+              aria-expanded="false" aria controls="menu-filtro">☰</button>
+            <input type="search" id="busca" placeholder="Buscar em todos os campos" autocomplete="off">  
+          </div>
+
+          <div id="menu-filtro" class="menu-filtro" hidden>
+          <label><input type="radio" name="campo-filtro" value="todos" checked> Todos os campos</label>
+          <label><input type="radio" name="campo-filtro" value="id" checked> ID</label>
+          <label><input type="radio" name="campo-filtro" value="nome" checked> Nome</label>
+          <label><input type="radio" name="campo-filtro" value="email" checked> E-mail</label>
+          <label><input type="radio" name="campo-filtro" value="endereco" checked> Endereco</label>
+          </div>
+
+          
         </div>
       </div>
 

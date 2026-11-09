@@ -6,6 +6,17 @@ const btnCadastrar = document.getElementById('btn-cadastrar')
 const titulo = document.getElementById('titulo-form')
 const campoId = document.getElementById('aluno-id')
 const campoBusca = document.getElementById('busca')
+const btnMenu = document.getElementById('btn-menu')
+const menuFiltro = document.getElementById('menu-filtro')
+
+const CAMPOS_FILTRO = {
+  todos: ['id', 'nome', 'email', 'celular', 'cep', 'logradouro', 'bairro', 'estado', 'cidade'],
+  id: ['id'],
+  nome: ['nome'],
+  email: ['email'],
+  celular: ['celular'],
+  endereco: ['cep', 'logradouro', 'bairro', 'estado', 'cidade']
+}
 
 
 let listaAlunos = []
@@ -15,9 +26,11 @@ const CAMPOS = ['nome', 'email', 'celular', 'cep', 'logradouro', 'bairro', 'esta
 
 const renderizarTabela = () => {
   const termo = campoBusca.value.trim().toLowerCase()
+  const escolhido = document.querySelector('input[name="filtro"]:checked').value
+  const campos = CAMPOS_FILTRO[escolhido]
+  
   const filtrados = listaAlunos.filter(aluno =>
-    (aluno.nome ?? '').toLowerCase().includes(termo) ||
-    (aluno.email ?? '').toLowerCase().includes(termo)
+    campos.some(campo => String(aluno[campo] ?? '').toLowerCase().includes(termo))
   )
 
   tbody.innerHTML = ''
@@ -95,6 +108,29 @@ tbody.addEventListener('click', async (evento) => {
     campoId.value = aluno.id
     titulo.textContent = 'Editar Aluno'
     btnCadastrar.textContent = 'Salvar alterações'
+  }
+})
+
+btnMenu.addEventListener('click', () => {
+  const vaiAbrir = menuFiltro.hidden
+  menuFiltro.hidden = !vaiAbrir
+  btnMenu.setAttribute('aria-expanded', vaiAbrir)
+})
+
+menuFiltro.addEventListener('change', (evento) => {
+  const rotulo = evento.target.parentElement.textContent.trim()
+  campoBusca.placeholder = evento.target.value === 'todos'
+  ? 'Buscar em todos os campos'
+  : `Buscar por ${rotulo.toLowerCase()}`
+renderizarTabela()
+menuFiltro.hidden = true
+btnMenu.setAttribute('aria-expanded', false)
+})
+
+document.addEventListener('click', (evento) => {
+  if (!evento.target.closest('.busca')) {
+    menuFiltro.hidden = true
+    btnMenu.setAttribute('aria-expanded', false)
   }
 })
 
